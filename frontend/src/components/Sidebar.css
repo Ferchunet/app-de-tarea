@@ -1,0 +1,101 @@
+/* frontend/src/components/Sidebar.css */
+
+/* Importa los estilos generales para usar las definiciones base de colores, fuentes, etc. */
+@import '../styles/styles.css';
+
+.sidebar {
+    width: 250px; /* Ancho fijo de la barra lateral */
+    min-width: 200px; /* Ancho mínimo si es flexible */
+    background-color: #f8f8f8; /* Fondo gris claro para la barra lateral */
+    border-right: 1px solid #eee; /* Separador visual */
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0; /* Padding vertical */
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-header .profile-icon {
+    margin-right: 10px;
+    color: #aaa; /* Color gris para el icono de perfil */
+}
+
+.sidebar-header .user-name {
+    font-weight: bold;
+    flex-grow: 1; /* Permite que el nombre ocupe espacio */
+    color: #333;
+}
+
+/* Estilos para la lista de navegación */
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Permite que la lista ocupe el espacio restante */
+}
+
+.sidebar-nav li {
+    margin-bottom: 2px; /* Espacio entre ítems de la lista */
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; /* Padding interno */
+    text-decoration: none;
+    color: #444; /* Color de texto */
+    font-size: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 4px; /* Bordes redondeados al pasar el ratón */
+    margin: 0 5px; /* Espacio a los lados para el efecto hover */
+}
+
+.sidebar-nav li a:hover {
+    background-color: #e0e0e0; /* Fondo gris más oscuro al pasar el ratón */
+    color: #333;
+}
+
+/* Estilo para el enlace activo (opcional, requiere manejo de estado o library) */
+/* .sidebar-nav li a.active {
+    background-color: #cce0ff;
+    color: #0067c0;
+    font-weight: bold;
+} */
+
+
+.sidebar-nav .nav-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #888; /* Color gris para los iconos de navegación */
+}
+
+/* Puedes dar colores específicos a los iconos de Mi Día, Importante, Tareas si quieres */
+/* .sidebar-nav li:nth-child(1) .nav-icon { color: #e75480; } */
+/* .sidebar-nav li:nth-child(2) .nav-icon { color: #ffc107; } */
+/* .sidebar-nav li:nth-child(3) .nav-icon { color: #0078d4; } */
+
+
+.sidebar-footer {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+/* Estilo del botón de agregar lista en el footer */
+.sidebar-footer button {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #0078d4; /* Color azul típico de enlaces de acción */
+}

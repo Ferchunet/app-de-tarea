@@ -1,0 +1,17 @@
+/* frontend/src/components/AllTasksScreen.css */
+
+/* Importa los estilos generales */
+@import '../styles/styles.css';
+
+/* Estilos Específicos para la Pantalla Todas las Tareas */
+.screen.all-tasks-screen {
+    /* Hereda de .screen su layout, padding, etc. */
+    /* Si quieres un fondo o estilo específico, añádelo aquí */
+    /* Ejemplo: background-color: #e3f2fd; */
+
+    position: relative;
+    z-index: 0;
+}
+
+/* Puedes añadir estilos específicos para elementos dentro de esta pantalla */
+/* Ejemplo: .screen.all-tasks-screen .task-item { ... } */

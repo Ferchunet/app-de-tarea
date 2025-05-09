@@ -1,0 +1,501 @@
+/* frontend/src/styles/styles.css */
+
+/* --- Estilos Generales --- */
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Fondo blanco general */
+}
+
+#root {
+    min-height: 100vh;
+}
+
+/* --- Layout Principal de Dos Columnas (.app) --- */
+.app {
+    display: flex; /* Usa Flexbox para la barra lateral y el contenido */
+    min-height: 100vh;
+    background-color: #ffffff; /* Fondo blanco para toda la app */
+    justify-content: flex-start; /* Alinea los elementos (barra lateral y area de contenido) al inicio horizontalmente */
+    align-items: stretch; /* Estira los elementos (barra lateral y area de contenido) para que ocupen toda la altura */
+    padding: 0; /* Sin padding en el contenedor principal del layout */
+    overflow: hidden; /* Evita desbordamientos si los elementos hijos superan el 100% */
+}
+
+/* --- Área de Contenido Principal (.main-content-area) --- */
+/* Esta área ocupa el espacio restante al lado de la barra lateral y contiene las pantallas */
+.main-content-area {
+    flex-grow: 1; /* Permite que ocupe todo el espacio horizontal restante */
+    display: flex; /* Es un contenedor flex para que las pantallas dentro se estiren */
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que ocupe toda la altura del .app */
+    /* El padding interno lo definen las pantallas (.screen) */
+    /* Puedes añadir un fondo base si no quieres que sea blanco del app */
+     background-color: #f9f9f9; /* Un gris muy claro para el área de contenido si no tiene fondo de pantalla específico */
+     overflow-x: hidden; /* Evita scroll horizontal no deseado */
+}
+
+
+/* Estilos para títulos (h1, h2, h3) */
+h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #e75480;
+    text-align: left;
+}
+
+/* Estilos para párrafos */
+p {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Estilos para listas (ul, ol) */
+ul, ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+}
+
+/* Estilos básicos para formularios */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    text-align: left;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group textarea:focus {
+     outline: none;
+     border-color: #e75480;
+     box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.2);
+}
+
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+/* Estilos base para botones */
+.button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    text-align: center;
+}
+
+.button.primary {
+    background-color: #e75480; /* Rosa principal */
+    color: white;
+    border: 1px solid #e75480;
+}
+
+.button.primary:hover {
+    background-color: #d43f6a;
+    border-color: #d43f6a;
+}
+
+.button.secondary {
+    background-color: white;
+    color: #e75480;
+    border: 1px solid #e75480;
+}
+
+.button.secondary:hover {
+    background-color: #fff5f9;
+    border-color: #d43f6a;
+    color: #d43f6a;
+}
+
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #e75480;
+    transition: color 0.2s ease, transform 0.1s ease;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.icon-button:hover {
+    color: #d43f6a;
+}
+
+.icon-button:active {
+    transform: scale(0.9);
+}
+
+
+/* --- Estilos Base para Pantallas (.screen) --- */
+/* ESTA REGLA DEFINE LA PANTALLA COMO UN CONTENEDOR AMPLIO POR DEFECTO EN FORMATO PC */
+/* ¡HE ELIMINADO LOS ESTILOS DE FORMA DE CELULAR DE AQUÍ COMPLETAMENTE! */
+.screen {
+    padding: 20px; /* Padding interno de la pantalla */
+    box-sizing: border-box;
+    min-height: 100vh; /* Ocupa toda la altura del main-content-area */
+    flex-grow: 1; /* Permite que ocupe el espacio disponible */
+    width: 100%; /* Ocupa todo el ancho del main-content-area */
+    height: auto; /* Altura se ajusta al contenido */
+
+    /* PROPIEDADES DE FORMA DE CELULAR ELIMINADAS: */
+    max-width: none;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+
+    /* Fondo base de pantalla (para pantallas sin imagen específica) */
+    background-color: #fff0f5; /* Fondo rosa claro por defecto */
+    color: #444;
+    position: relative; /* Puede ser necesario para posicionar elementos internos */
+    z-index: 0; /* Capa base */
+    display: flex; /* Mantener como contenedor flex */
+    flex-direction: column;
+    align-items: flex-start; /* Alinea contenido a la izquierda */
+}
+
+/* Estilos para el header de pantalla (título, fecha) */
+/* El botón de regreso se elimina en los componentes JSX */
+.screen-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+
+/* El div .title-and-date ahora puede simplemente contener el título y la fecha */
+.screen-header .title-and-date {
+     flex-grow: 1;
+     text-align: left;
+}
+
+.screen-header .title-and-date h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e75480;
+    text-align: left;
+}
+
+.screen-header .title-and-date p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.screen-content {
+    flex-grow: 1;
+    position: relative;
+    z-index: 3;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Espaciado entre los bloques de contenido principal dentro de .screen-content */
+.screen-content > *:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+
+/* --- Estilos para la Pantalla Principal (MainScreen) --- */
+/* Si MainScreen es una pantalla de contenido por defecto, heredará de .screen */
+/* Si no usa un CSS propio, tendrá el fondo rosa claro por defecto de .screen */
+/* Si usa CSS propio, ese archivo definirá su fondo. */
+
+
+/* Estilos para la barra de búsqueda en MainScreen (si MainScreen es una pantalla de contenido) */
+/* O si decides poner una barra de búsqueda en el área de contenido principal */
+/* Estos son estilos de un COMPONENTE (SearchBar) que puede usarse en varias pantallas */
+.search-bar { /* Quitamos .main-screen para hacerlo más reutilizable */
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    border: 1px solid #ffb6c1;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    width: 100%; /* Asegura que ocupe el ancho si es un hijo de .screen-content */
+    box-sizing: border-box;
+}
+
+.search-bar .search-icon {
+    margin-right: 10px;
+    color: #e75480;
+    font-size: 1.2rem;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    padding: 5px 0;
+    background-color: transparent;
+    color: #333;
+    text-align: left;
+}
+
+.search-bar input::placeholder {
+    color: #d8a0c0;
+}
+
+/* Estilos para la lista de secciones (Mi Día, Importante, Tareas) en MainScreen */
+/* Estos son estilos de un COMPONENTE (SectionList) que puede usarse en MainScreen */
+.main-sections-list { /* Quitamos .main-screen */
+    list-style: none;
+    padding: 0;
+    margin: 0; /* El espaciado vertical se controla por el margen inferior de los hijos directos de .screen-content */
+    flex-grow: 1;
+    text-align: left;
+}
+
+.main-sections-list li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    background-color: transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #444;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease;
+    text-align: left;
+}
+
+.main-sections-list li a:hover {
+    background-color: #ffe0f0;
+}
+
+.main-sections-list li a .section-icon {
+    margin-right: 12px;
+    color: #e75480;
+    font-size: 1.3rem;
+}
+
+/* Estilos para la sección "Agregar nueva lista" en MainScreen */
+/* Estos son estilos de un COMPONENTE que puede usarse en MainScreen */
+.add-list-section { /* Quitamos .main-screen */
+    margin-top: 0; /* El espaciado superior se controla por el margen inferior del elemento anterior en .screen-content */
+    padding-top: 15px;
+    border-top: 1px solid #ffb6c1;
+    text-align: left;
+}
+
+.add-list-button { /* Quitamos .main-screen */
+    background: none;
+    border: none;
+    color: #800040;
+    cursor: pointer;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.add-list-button:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilos para el Floating Action Button (FAB) - Posicionado GLOBALMENTE */
+.fab {
+  position: fixed; /* Mantiene la posición fija en la ventana del navegador */
+  bottom: 30px;
+  right: 30px; /* O ajusta a la derecha del área de contenido */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #e75480;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  z-index: 500; /* Alto z-index */
+}
+
+.fab:hover {
+  background-color: #d43f6a;
+}
+
+.fab:active {
+    transform: scale(0.95);
+}
+
+
+/* --- Estilos para Tareas Individuales (TaskItem) --- */
+/* Estos estilos se aplican si más adelante decides mostrar tareas en MyDayScreen */
+.task-item {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #ffb6c1;
+    border-radius: 5px;
+    padding: 12px 15px;
+    margin-bottom: 10px; /* Espacio entre tareas */
+    display: flex;
+    align-items: flex-start; /* Alinea arriba */
+    justify-content: space-between;
+    transition: box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    width: 100%; /* Ocupa el ancho completo de la lista ul */
+    box-sizing: border-box;
+}
+
+.task-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.task-item.completed {
+    opacity: 0.7;
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task-item.important {
+    border-left: 6px solid #ff85a2;
+    padding-left: 15px;
+}
+
+
+.task-item-content {
+    display: flex;
+    align-items: flex-start; /* Alinea arriba */
+    flex-grow: 1;
+    margin-right: 15px;
+    text-align: left;
+    gap: 15px; /* Espacio entre iconos/checkbox y texto */
+}
+
+.task-icons-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-align: left;
+    gap: 10px; /* Espacio entre checkbox y estrella */
+}
+
+.task-completed-checkbox {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.task-icons-left .important-button {
+    color: #e75480;
+    font-size: 1.2rem;
+}
+
+.task-icons-left .important-button:hover {
+     color: #d43f6a;
+}
+
+
+.task-details {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.task-details h3 {
+     margin: 0 0 3px 0;
+     font-size: 1.1rem;
+     font-weight: 600;
+     color: #333;
+     cursor: pointer;
+     text-align: left;
+}
+
+.task-details p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+    text-align: left;
+}
+
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    align-items: flex-start; /* Alinea arriba */
+    text-align: left;
+}
+
+.task-actions .icon-button {
+     color: #a0a0a0;
+}
+
+.task-actions .icon-button:hover {
+     color: #555;
+}

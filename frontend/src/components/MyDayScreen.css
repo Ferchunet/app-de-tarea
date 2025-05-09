@@ -1,0 +1,130 @@
+/* frontend/src/components/MyDayScreen.css */
+
+/* Importa los estilos generales */
+@import '../styles/styles.css';
+
+/* Estilos Específicos para la Pantalla Mi Día */
+/* Esta regla se aplica al contenedor principal de la pantalla Mi Día */
+/* Hereda las propiedades de layout y padding de .screen */
+.screen.my-day-screen {
+    /* El fondo y el overlay ahora se aplicarán al encabezado visual, no a toda la pantalla */
+    background-color: transparent; /* Asegura que la base de la pantalla no oculte el main-content-area */
+
+    /* Aseguramos que ocupe el 100% del espacio disponible en el .screen */
+    width: 100%;
+    min-height: 100%; /* Para que el fondo cubra la altura del contenido si es menor que 100vh */
+    flex-grow: 1; /* Para que se estire si es un contenedor flex */
+
+    position: relative; /* Necesario para pseudo-elementos si se usan en el futuro */
+    z-index: 0; /* Capa base */
+
+    /* No necesita anular las propiedades de forma de celular, ya no están en .screen */
+}
+
+/* --- Sección de Encabezado Visual (Fondo Floral y Overlay) --- */
+.my-day-header-visual {
+    width: 100%; /* Ocupa todo el ancho */
+    padding: 20px; /* Espacio interno similar al padding de .screen */
+    box-sizing: border-box;
+    position: relative; /* Para posicionar el overlay y el contenido del header */
+    z-index: 0; /* Capa base para esta sección */
+
+    /* Fondo floral con cielo azul (tu imagen) */
+    background-image: url('/images.jpg'); /* <-- ¡RUTA DE TU IMAGEN! */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff; /* Color de texto claro para el encabezado sobre fondo oscuro */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra sutil para el texto */
+}
+
+/* Capa semi-transparente (Overlay Rosa/Morado como en To Do) */
+.my-day-header-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* AJUSTE: Degradado similar a To Do pero en tonos rosados/morados */
+    background: linear-gradient(to bottom right, rgba(231, 84, 128, 0.7), rgba(128, 0, 64, 0.7)); /* Degradado rosa a morado */
+    z-index: 1; /* Entre el fondo (0) y el contenido del header (2) */
+}
+
+/* Estilos para el contenido (título, fecha, iconos) dentro del encabezado visual */
+/* screen-header ya tiene display: flex, justify-content: flex-start, width: 100% en styles.css */
+.my-day-header-visual .screen-header {
+    position: relative; /* Para estar por encima del overlay */
+    z-index: 2; /* Por encima del overlay (1) */
+    color: #fff; /* Asegura que el texto y los iconos sean blancos/claros */
+    /* Hereda margin-bottom de styles.css */
+}
+
+.my-day-header-visual .screen-header .title-and-date h2 {
+    color: #fff; /* Título blanco */
+    font-size: 2rem; /* Título más grande */
+    font-weight: bold;
+}
+
+.my-day-header-visual .screen-header .title-and-date p {
+    color: rgba(255, 255, 255, 0.9); /* Fecha ligeramente transparente */
+    font-size: 1rem;
+}
+
+.my-day-header-visual .screen-header .header-icons .icon-button {
+    color: #fff; /* Iconos blancos */
+    font-size: 1.5rem; /* Iconos más grandes */
+}
+
+/* --- Área de Contenido Principal (Fondo Blanco) --- */
+/* my-day-main-content es un div dentro de .screen.my-day-screen */
+/* Usa la clase screen-content para heredar padding y layout interno */
+.my-day-main-content.screen-content {
+    background-color: #ffffff; /* Fondo blanco */
+    flex-grow: 1; /* Ocupa el espacio restante */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    box-sizing: border-box;
+    padding: 20px; /* Añade padding interno para separar el contenido de los bordes */
+}
+
+/* Estilos para el botón "+ Agregar tarea" dentro del contenido principal */
+/* Usa la clase .add-task-button definida en styles.css */
+/* Asegura que se alinee a la izquierda en este contexto */
+.my-day-main-content .add-task-button {
+    /* Hereda estilos base de styles.css */
+    margin-top: 15px; /* Ajuste de margen superior */
+    margin-bottom: 15px; /* Espacio debajo del botón */
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start; /* Alineación a la izquierda */
+}
+
+.my-day-main-content .add-task-button svg {
+    margin-right: 8px;
+    font-size: 1.3rem;
+}
+
+.my-day-main-content .add-task-button:hover {
+     text-decoration: underline;
+}
+
+/* Estilos de la sección de sugerencias (dentro de my-day-main-content) */
+/* Usa la clase .suggestions-section definida en styles.css */
+/* Asegura que se alinee a la izquierda en este contexto */
+.my-day-main-content .suggestions-section {
+    /* Hereda estilos base de styles.css */
+    margin-top: 0; /* El espaciado lo controla el margen del botón add-task */
+    padding-top: 15px;
+    border-top: 1px solid #eee; /* Borde gris claro */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left; /* Asegura alineación a la izquierda */
+}
+
+.my-day-main-content .suggestions-section h3 {
+
+    font-size: 1.2rem;
+    color: #555; /* Color de texto un poco más suave */
+    margin-bottom: 10px;
+    text-align: left; /* Asegura alineación a la izquierda */
+}
