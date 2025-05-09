@@ -1,117 +1,78 @@
-# Aplicación de Gestión de Tareas (To-Do App)
+# App de Tareas - Mi Proyecto
 
-Este proyecto es una aplicación web simple para gestionar tareas personales, permitiendo organizarlas por "Mi Día", marcarlas como importantes y ver una lista completa con opciones de filtro y búsqueda.
+¡Hola! Este es el repositorio de mi proyecto de **App de Tareas**. La desarrollé como parte de un challenge y es una aplicación web sencilla pero funcional para organizar mis (y tus) tareas diarias.
 
-## Características Implementadas
+La idea es tener un lugar donde pueda anotar pendientes, marcar los más importantes, ver qué tengo que hacer "Hoy" y tener una vista general de todo.
 
-* **Gestión Completa de Tareas:** Crear, ver (todas), editar y eliminar tareas.
-* **Marcado de Estado:** Marcar tareas como completadas/incompletas y como importantes/no importantes.
-* **Vistas Organizadas:**
-    * **Mi Día:** Muestra las tareas marcadas específicamente para el día actual.
-    * **Importante:** Muestra todas las tareas marcadas como importantes.
-    * **Tareas:** Muestra una lista completa de todas las tareas.
-* **Filtrado en "Tareas":** Filtra la lista de tareas por estado (Todas, Completadas, Incompletas).
-* **Búsqueda en "Tareas":** Busca tareas por título y descripción (filtrado en frontend sobre los resultados actuales).
-* **Fecha de Vencimiento:** Permite asignar una fecha de vencimiento a las tareas y mostrarla en la lista.
-* **Persistencia de Datos:** Las tareas se almacenan en una base de datos SQLite en el backend.
-* **Interfaz de Usuario:** Diseño básico con una barra lateral de navegación y área de contenido principal.
-* **Diseño Responsivo (Parcial):** Orientado principalmente a una vista amplia (PC).
+## Un Vistazo al Proyecto
+
+La aplicación se divide en dos partes principales:
+
+* **Frontend:** Es la parte visual con la que interactúas, construida con React.
+* **Backend:** Es el servidor que guarda y administra las tareas, hecho con Node.js, Express y una pequeña base de datos SQLite.
+
+También incluí una carpeta `capturas/` donde guardé algunas imágenes de cómo se ve la app funcionando.
 
 ## Tecnologías Utilizadas
 
-* **Frontend:**
-    * React (con Hooks)
-    * Vite (para el entorno de desarrollo y build)
-    * JavaScript (ES6+)
-    * HTML5
-    * CSS3
-    * React Router DOM (para navegación)
-    * React Icons (para iconos)
-* **Backend:**
-    * Node.js
-    * Express (para la API REST)
-    * SQLite (como base de datos)
-    * `sqlite3` (driver para SQLite en Node.js)
-    * `cors` (para permitir comunicación entre frontend y backend)
-    * `uuid` (para generar IDs únicos para las tareas)
-    * Nodemon (para reiniciar el servidor backend automáticamente durante el desarrollo)
-* **Herramientas:**
-    * npm / Yarn (gestores de paquetes)
-    * Git (control de versiones)
+Me basé en estas herramientas para construir el proyecto:
 
-## Prerrequisitos
+* **Frontend:** React (con sus hooks como `useState`, `useEffect`, `useMemo`), React Router para navegar entre vistas, y React Icons para los iconitos chulos. Todas las dependencias están en `frontend/package.json`.
+* **Backend:** Node.js y Express para el servidor, y `sqlite3` para la base de datos. Las dependencias están en `backend/package.json`.
+* **Para gestionar el código:** Obviamente, Git.
 
-Asegúrate de tener instalado lo siguiente:
+## Cómo Poner Esto a Andar (Instrucciones para Ejecutar Localmente)
 
-* [Node.js](https://nodejs.org/) (incluye npm)
-* Opcionalmente, [Yarn](https://yarnpkg.com/)
-* [Git](https://git-scm.com/)
+Si quieres probar la app en tu máquina, sigue estos pasos:
 
-## Instalación y Ejecución Local
-
-Sigue estos pasos para poner en marcha la aplicación en tu máquina local:
-
-1.  **Clona el repositorio Git:**
+1.  **Clona el Repo:** Abre tu terminal, ve a la carpeta donde quieras guardar el proyecto y clona esto:
     ```bash
-    git clone <URL_DE_TU_REPOSITORIO>
-    cd <nombre_de_la_carpeta_del_proyecto>
-    ```
-    *(Reemplaza `<URL_DE_TU_REPOSITORIO>` con la URL real de tu repositorio Git y `<nombre_de_la_carpeta_del_proyecto>` con el nombre de la carpeta que se cree)*
-
-2.  **Instala las dependencias del Backend:**
-    ```bash
-    cd backend
-    npm install
-    # o si usas Yarn:
-    # yarn install
+    git clone <URL de tu repositorio en GitHub, la que empieza con https>
+    cd nombre-de-la-carpeta-del-proyecto # Entra a la carpeta que se creó
     ```
 
-3.  **Instala las dependencias del Frontend:**
-    ```bash
-    cd ../frontend # Vuelve a la carpeta raíz del proyecto y luego entra a frontend
-    npm install
-    # o si usas Yarn:
-    # yarn install
-    ```
+2.  **Arranca el Servidor (Backend):**
+    * Entra a la carpeta `backend`:
+        ```bash
+        cd backend
+        ```
+    * Instala las cosas que necesita el servidor:
+        ```bash
+        npm install
+        ```
+    * Inicia el servidor. Va a correr en `http://localhost:3000`:
+        ```bash
+        node server.js
+        # Si usas nodemon (recomendado para desarrollo):
+        # nodemon server.js
+        ```
 
-4.  **Inicia el servidor Backend:**
-    Abre una nueva terminal, navega a la carpeta `backend` y ejecuta:
-    ```bash
-    cd backend
-    npm run dev
-    # o si usas Yarn:
-    # yarn dev
-    ```
-    Verás un mensaje indicando que el servidor backend está corriendo en `http://localhost:3001` y se conecta a la base de datos `tasks.db`. **Asegúrate de que no aparezcan errores al iniciar el backend, especialmente errores relacionados con SQLite.** Si es necesario, elimina el archivo `tasks.db` y reinicia el backend para regenerar la base de datos con la estructura correcta.
+3.  **Arranca la App (Frontend):**
+    * Vuelve a la carpeta principal del proyecto y entra a `frontend`:
+        ```bash
+        cd ..
+        cd frontend
+        ```
+    * Instala las dependencias de la app visual:
+        ```bash
+        npm install
+        ```
+    * Inicia la app en tu navegador. Normalmente se abre en `http://localhost:5173/`:
+        ```bash
+        npm run dev
+        ```
+    ¡Listo! Recuerda tener el backend corriendo para que la app funcione correctamente.
 
-5.  **Inicia el servidor Frontend:**
-    Abre otra nueva terminal, navega a la carpeta `frontend` y ejecuta:
-    ```bash
-    cd frontend
-    npm run dev
-    # o si usas Yarn:
-    # yarn dev
-    ```
-    Verás un mensaje indicando que el servidor de desarrollo frontend está corriendo, probablemente en `http://localhost:5173`.
+## Algunas Imágenes de la App
 
-6.  **Abre la aplicación en tu navegador:**
-    Visita `http://localhost:5173` (o el puerto que indique tu terminal de frontend) en tu navegador web.
+Aquí te dejo unas capturas rápidas para que veas cómo luce:
 
-## Estructura del Proyecto
-
-La estructura principal del proyecto es la siguiente:
-
-
-
-## Capturas de Pantalla
-
+![Vista principal - Mi Día](./capturas/image.png)
+![Vista de Tareas Importantes](capturas/image2.png)
+![Vista de Todas las Tareas con filtros](capturas/image3.png)
+![El modal para agregar o editar una tarea](capturas/image4.png)
 
 ---
 
 
-![Captura de pantalla de la vista Mi Día](./capturas/image.png)
-![Captura de pantalla de la vista Tareas con filtro y búsqueda](./capturas/image3.png)
-![Captura de pantalla de la vista importante](./capturas/image2.png)
-![Captura de pantalla apis](./capturas/image4.png)
 
----
